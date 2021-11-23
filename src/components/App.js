@@ -34,6 +34,11 @@ class App extends React.Component {
     }))
   }
 
+  onAdoptPet = (petID) => {
+    const pet = this.state.pets.find(pet => pet.id === petID)
+    pet.isAdopted = true
+  }
+
   render() {
     return (
       <div className="ui container">
@@ -46,7 +51,7 @@ class App extends React.Component {
               <Filters onChangeType={this.onChangeType} onFindPetsClick={this.onFindPetsClick}/>
             </div>
             <div className="twelve wide column">
-              <PetBrowser />
+              <PetBrowser pets={this.state.pets} onAdoptPet={this.onAdoptPet}/>
             </div>
           </div>
         </div>
